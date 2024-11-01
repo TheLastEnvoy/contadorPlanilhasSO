@@ -28,7 +28,7 @@ st.dataframe(filtered_data)
 
 # Gráfico de barras
 st.header("Distribuição de Abas por Planilha")
-st.bar_chart(data["Quantidade de Abas"].value_counts().sort_index())
+st.bar_chart(filtered_data.set_index("Nome da Planilha")["Quantidade de Abas"])
 
 # Mostrar detalhes de uma planilha específica
 st.sidebar.header("Detalhes da Planilha")
