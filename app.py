@@ -11,6 +11,16 @@ data = load_data()
 # Título do dashboard
 st.title("Dashboard de Planilhas")
 
+# Tabela com total de planilhas e abas
+st.header("Totais")
+total_planilhas = len(data)
+total_abas = data["Quantidade de Abas"].sum()
+totais_df = pd.DataFrame({
+    "Total de Planilhas": [total_planilhas],
+    "Total de Abas": [total_abas]
+})
+st.table(totais_df)
+
 # Mostrar a tabela completa
 st.header("Tabela Completa")
 st.dataframe(data)
@@ -18,10 +28,3 @@ st.dataframe(data)
 # Gráfico de barras
 st.header("Distribuição de Abas por Planilha")
 st.bar_chart(data.set_index("Nome da Planilha")["Quantidade de Abas"])
-
-# Tabela com total de planilhas e abas
-st.header("Totais")
-total_planilhas = len(data)
-total_abas = data["Quantidade de Abas"].sum()
-st.write(f"Total de Planilhas: {total_planilhas}")
-st.write(f"Total de Abas: {total_abas}")
